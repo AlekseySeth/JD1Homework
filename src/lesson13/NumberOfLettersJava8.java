@@ -19,8 +19,8 @@ public class NumberOfLettersJava8 {
                 .map(String::toLowerCase)
                 .collect(Collectors.joining(""))
                 .replaceAll("(\\p{Punct})|(\\p{javaSpaceChar})|(—)", "")
-                .chars().mapToObj(e->(char)e)
-                .collect(TreeMap::new, (m, c) -> m.put(c, m.containsKey(c) ? (m.get(c) + 1) : 1), TreeMap::putAll);
+                .chars().mapToObj(c ->(char)c)
+                .collect(TreeMap::new, (key, value) -> key.put(value, key.containsKey(value) ? (key.get(value) + 1) : 1), TreeMap::putAll);
 
         for(Map.Entry e : result.entrySet()) {
             System.out.println(e.getKey() + " - " + e.getValue());
